@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EMBERFALL DUEL — a turn-based card battler</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <div id="embers" aria-hidden="true"></div>
+
+  <section id="title-screen" class="screen">
+    <div class="title-inner">
+      <div class="title-glyph">▲ ◆ ✦</div>
+      <h1>EMBERFALL<br>DUEL</h1>
+      <p class="tagline">A turn-based card battler. Forge a hand of ember, frost, verdant, spark and shadow — and burn Pyra down before she burns you.</p>
+      <button id="play-btn" class="big-btn">▶ &nbsp;PLAY</button>
+      <div class="howto">
+        <div><b>1 · ENERGY</b><span>3 energy each turn. Cards cost 0–3.</span></div>
+        <div><b>2 · PLAY</b><span>Click a card (or press 1–5) to play it.</span></div>
+        <div><b>3 · SURVIVE</b><span>Shield blocks damage. Burn ticks each turn.</span></div>
+        <div><b>4 · WIN</b><span>Reduce Pyra to 0 life. She reads your hand — and shows her intent.</span></div>
+      </div>
+      <p class="credit">Original game · no assets borrowed · built for make.fun</p>
+    </div>
+  </section>
+
+  <section id="table-screen" class="screen hidden">
+    <div class="table">
+      <div class="foe-row">
+        <div class="avatar foe-avatar">☾</div>
+        <div class="fighter">
+          <div class="fighter-head"><span class="fname">Pyra, the Ember Witch</span><span class="flevel">AI OPPONENT</span></div>
+          <div class="hpbar"><div id="ai-hp-fill" class="hp-fill foe"></div><span id="ai-hp-text" class="hp-text">30 / 30</span></div>
+          <div class="status-line"><span id="ai-shield" class="chip shield-chip hidden">🛡 0</span><span id="ai-effects" class="effects"></span></div>
+          <div id="ai-intent" class="intent">Pyra is gathering power…</div>
+        </div>
+        <div class="deck-pile"><div class="mini-back"></div><div id="ai-deck-count" class="pile-count">15</div><div class="pile-label">DECK</div></div>
+        <div id="ai-hand" class="ai-hand"></div>
+      </div>
+
+      <div class="mid-row">
+        <div id="log" class="log"></div>
+        <div id="floaters" class="floaters"></div>
+        <div class="turn-box"><div id="turn-label" class="turn-label">TURN 1</div><button id="end-turn-btn" class="end-btn">END TURN ⏎</button></div>
+      </div>
+
+      <div class="you-row">
+        <div class="avatar you-avatar">▲</div>
+        <div class="fighter">
+          <div class="fighter-head"><span class="fname">You — the Ember Knight</span><span class="flevel">30 LIFE</span></div>
+          <div class="hpbar"><div id="pl-hp-fill" class="hp-fill you"></div><span id="pl-hp-text" class="hp-text">30 / 30</span></div>
+          <div class="status-line"><span id="pl-shield" class="chip shield-chip hidden">🛡 0</span><span id="pl-effects" class="effects"></span></div>
+          <div id="energy" class="energy"></div>
+        </div>
+        <div class="deck-pile"><div class="mini-back"></div><div id="deck-count" class="pile-count">15</div><div class="pile-label">DECK</div></div>
+      </div>
+
+      <div id="hand" class="hand"></div>
+      <div class="hand-hint">Click a card to play it · keys 1–5 play · Space ends the turn</div>
+    </div>
+  </section>
+
+  <section id="end-screen" class="screen hidden">
+    <div class="end-inner">
+      <h1 id="end-title">VICTORY</h1>
+      <p id="end-sub" class="tagline">Pyra is defeated. The ember is yours.</p>
+      <div id="end-stats" class="end-stats"></div>
+      <button id="again-btn" class="big-btn">↻ &nbsp;PLAY AGAIN</button>
+    </div>
+  </section>
+</div>
+<script type="module" src="game.js"></script>
+</body>
+</html>
